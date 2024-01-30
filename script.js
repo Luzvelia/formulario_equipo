@@ -6,45 +6,37 @@ function crearForm() {
 
     var tituloName = document.createElement("label");
     var inputName = document.createElement("input");
-    var textName = document.createElement("p");
 
     var tituloApellido = document.createElement("label");
     var inputApellido = document.createElement("input");
-    var textApellido = document.createElement("p");
 
 
     var tituloDni = document.createElement("label");
     var inputDni = document.createElement("input");
-    var textDni = document.createElement("p");
 
 
     var tituloEmail = document.createElement("label");
     var inputEmail = document.createElement("input");
-    var textEmail = document.createElement("p");
-
 
     var button = document.createElement("button");
+
+    // 
 
 
     // añadir inputs y label al formulario
     formulario.appendChild(tituloName);
     formulario.appendChild(inputName);
-    formulario.appendChild(textName);
 
     formulario.appendChild(tituloApellido);
     formulario.appendChild(inputApellido);
-    formulario.appendChild(textApellido);
 
     formulario.appendChild(tituloDni);
     formulario.appendChild(inputDni);
-    formulario.appendChild(textDni);
-
+  
     formulario.appendChild(tituloEmail);
     formulario.appendChild(inputEmail);
-    formulario.appendChild(textEmail);
 
     formulario.appendChild(button);
-
 
     // Agregar texto al label
     tituloName.innerHTML ='<h3>Nombre</h3>';
@@ -54,39 +46,47 @@ function crearForm() {
     button.innerHTML ='<h3>Validar</h3>';
 
 
+
+    // Crear textos para el div mostrar
+    var textName = document.createElement("p");
+    var textApellido = document.createElement("p");
+    var textDni = document.createElement("p");
+    var textEmail = document.createElement("p");
+
+
+
+     // añadir textos al div mostrar
+     mostrar.appendChild(textName);
+     mostrar.appendChild(textApellido);
+     mostrar.appendChild(textDni);
+     mostrar.appendChild(textEmail);
+ 
+
+
+
     // Agregar atributos a los inputs
 
     inputName.setAttribute('type', "text");
     inputName.setAttribute('placeholder', "Nombre");
     inputName.setAttribute('id', "inputName");
     textName.setAttribute('id', "textName");
-    textName.setAttribute('text', "Los datos ingresados no son válidos");
-    textName.setAttribute('style', "color:red;")
 
     
     inputApellido.setAttribute('type', "text");
     inputApellido.setAttribute('placeholder', "Apellido");
     inputApellido.setAttribute('id', "inputApellido");
     textApellido.setAttribute('id', "textApellido");
-    textApellido.setAttribute('text', "Los datos ingresados no son válidos");
-    textApellido.setAttribute('style', "color:red;")
-
     
     inputDni.setAttribute('type', "text");
     inputDni.setAttribute('placeholder', "DNI");
     inputDni.setAttribute('id', "inputDni");
     textDni.setAttribute('id', "textDni");
-    textDni.setAttribute('text', "Los datos ingresados no son válidos");
-    textDni.setAttribute('style', "color:red;")
 
     
     inputEmail.setAttribute('type', "email");
     inputEmail.setAttribute('placeholder', "Email");
     inputEmail.setAttribute('id', "inputEmail");
     textEmail.setAttribute('id', "textEmail");
-    textEmail.setAttribute('text', "Los datos ingresados no son válidos");
-    textEmail.setAttribute('style', "color:red;")
-
 
 
     button.setAttribute('type', "button");
@@ -94,39 +94,33 @@ function crearForm() {
     button.setAttribute('id', "button");
 
 
-    // agregar estilos a los inputs
-
-
     document.body.appendChild(formulario);
+    document.body.appendChild(mostrar);
     console.log(formulario);
- 
+    console.log(mostrar);
 }
 
 crearForm();    
 
 
-
-
 // Validar campos vacíos
-
 button.addEventListener("click", ()=> {
     if(inputName.value.length == ""){
-        document.getElementById("textName").innerHTML="El campo está vacío, por favor ingrese el dato solicitado";
+        document.getElementById("textName").innerHTML="El campo Nombre está vacío, por favor ingrese el dato solicitado";
     }
     if(inputApellido.value.length == ""){
-        document.getElementById("textApellido").innerHTML="El campo está vacío, por favor ingrese el dato solicitado";
+        document.getElementById("textApellido").innerHTML="El campo Apellido está vacío, por favor ingrese el dato solicitado";
 
     }
     if(inputDni.value.length == ""){
-        document.getElementById("textDni").innerHTML="El campo está vacío, por favor ingrese el dato solicitado";
+        document.getElementById("textDni").innerHTML="El campo DNI está vacío, por favor ingrese el dato solicitado";
 
     }
     if(inputEmail.value.length == ""){
-        document.getElementById("textEmail").innerHTML="El campo está vacío, por favor ingrese el dato solicitado";
+        document.getElementById("textEmail").innerHTML="El campo Email está vacío, por favor ingrese el dato solicitado";
 
     }
 }) 
-
 
 
 
@@ -137,10 +131,12 @@ function validarNombre() {
     for (let i = 0; i < nombre.length; i++) {
         if(esLetra(nombre[i])){
             contador++;
-        }
+        } 
     }
     console.log(contador);
     return contador == nombre.length;
+
+    
 }
 
 
@@ -154,6 +150,8 @@ function validarApellido() {
     for (let i = 0; i < apellido.length; i++) {
         if(esLetra(apellido[i])){
             contador++;
+        } else{
+            
         }
     }
     console.log(contador);
@@ -171,14 +169,23 @@ function esLetra(c) {
 
 
 button.addEventListener("click", ()=>{
+    
+    textName.innerHTML = document.getElementById("inputName").value;
+    textApellido.innerHTML = document.getElementById("inputApellido").value;
+    textDni.innerHTML = document.getElementById("inputDni").value;
+    textEmail.innerHTML = document.getElementById("inputEmail").value;
 
-    if (validarNombre() == false) {
-        document.getElementById("textName").innerHTML="error";
+
+
+    if (textName.innerHTML === true){
+        textName.innerHTML.setAttribute('style', "color:blue;")
+
+    } else{
+        textName.innerHTML.setAttribute('style', "color:red;")
+
     }
-   
-    if (validarApellido() == false) {
-        document.getElementById("textApellido").innerHTML="error";
-    }
+
+
 }
 )
 
