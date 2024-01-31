@@ -134,6 +134,86 @@ function validarApellido() {
 }
 
 
+// validacion email
+
+function tieneArroba() {
+    var mail = document.getElementById("inputEmail").value;
+    var cont = 0;
+    const arroba = "@";
+    var i = 1;
+    if(!(mail[0] == arroba || mail[mail.length - 1] == arroba)){
+        while (cont < 1 && i < mail.length) {
+            console.log(mail[i].length-3);
+            if (mail[i] == arroba) {
+                cont++; 
+            }
+            i++; 
+        }
+    }
+
+    return cont == 1;
+}
+    
+
+function tienePunto() {
+    var email = document.getElementById("inputEmail").value;
+    var cont = 0;
+    const punto = ".";
+    var i = 1;
+    if(!(email[0] == punto || email[email.length - 1] == punto)){
+        while (cont < 1 && i < email.length) {
+            if (email[i] == punto) {
+                cont++;
+            }
+            i++; 
+        }
+    }
+    return cont == 1;  
+}
+
+function validarEmail() {
+    if (tieneArroba() === true && tienePunto() === true) {
+        textEmail.style.color="blue";
+    }else{
+        textEmail.style.color="red"; 
+    }
+}
+
+// validar DNI
+
+
+
+// function validarDni() {
+//     var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+ 
+//     do {
+//        var numeroDni = document.getElementById("inputDni");
+//     } while (isNaN(numeroDni) || numeroDni < 0 || numeroDni > 99999999);
+//     do {
+//         var letraDni = numeroDni%23;
+//     } while ((letraDni < 'a' || letraDni > 'z') && (letraDni < 'A' || letraDni > 'Z'));
+
+//         var letraAsignada = numeroDni & 23;
+//     if (letras[letraAsignada] == letraDni.toUpperCase) {
+//         textEmail.style.color="blue";
+//     } else {
+//         textEmail.style.color="red";
+//     }
+// }
+
+
+function validarDni() {
+    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+    var numeroDni = document.getElementById("inputDni").value;
+
+}
+
+
+
+
+
+
+
 // mostrar los textos de los inputs
 button.addEventListener("click", ()=>{
     textName.innerHTML = document.getElementById("inputName").value;
@@ -142,9 +222,12 @@ button.addEventListener("click", ()=>{
     textEmail.innerHTML = document.getElementById("inputEmail").value;
     validarNombre();
     validarApellido();
+    validarEmail();
     validarDni();
     }
 )
+
+
 
 // Validar campos vacíos
 button.addEventListener("click", ()=> {

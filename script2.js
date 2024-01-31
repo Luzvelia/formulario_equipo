@@ -10,58 +10,58 @@
 }*/
 
 
-function esEmail(mail) {
-    var cont = 0;
-    const arroba = "@";
-    var i = 1;
-    if(!(mail[0] == arroba || mail[mail.length - 1] == arroba) ){
-        while (cont < 1 && i < mail.length) {
-            if (mail[i] == arroba ) {
-                cont++;
-            }
-            i++; 
-        }
-    }
+// function esEmail(mail) {
+//     var cont = 0;
+//     const arroba = "@";
+//     var i = 1;
+//     if(!(mail[0] == arroba || mail[mail.length - 1] == arroba) ){
+//         while (cont < 1 && i < mail.length) {
+//             if (mail[i] == arroba ) {
+//                 cont++;
+//             }
+//             i++; 
+//         }
+//     }
     
-    return cont == 1;
+//     return cont == 1;
 
-}
+// }
 
-console.log(esEmail("j@hk@hj"));
-
-
+// console.log(esEmail("j@hk@hj"));
 
 
 
-function validarDNI() {
-
-    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-    var NumeroDni;
-    var LetraDni;
-
-    do {
-
-        NumeroDni = prompt("ingrese el numero de dni");
 
 
-    } while (isNaN(NumeroDni) || NumeroDni < 0 || NumeroDni > 99999999);
-    do {
-        LetraDni = prompt("Ingrese letra del DNI");
-    } while ((LetraDni < 'a' || LetraDni > 'z') && (LetraDni < 'A' || LetraDni > 'Z'));
+// function validarDNI() {
+
+//     var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+//     var NumeroDni;
+//     var LetraDni;
+
+//     do {
+
+//         NumeroDni = prompt("ingrese el numero de dni");
 
 
-    var LetraAsignada = NumeroDni & 23;
-    if (letras[LetraAsignada] == LetraDni.toUpperCase) {
-        alert("la letra es correcta");
-
-    } else {
-        alert("letra incorrecta");
-    }
+//     } while (isNaN(NumeroDni) || NumeroDni < 0 || NumeroDni > 99999999);
+//     do {
+//         LetraDni = prompt("Ingrese letra del DNI");
+//     } while ((LetraDni < 'a' || LetraDni > 'z') && (LetraDni < 'A' || LetraDni > 'Z'));
 
 
+//     var LetraAsignada = NumeroDni & 23;
+//     if (letras[LetraAsignada] == LetraDni.toUpperCase) {
+//         alert("la letra es correcta");
 
-}
-validarDNI();
+//     } else {
+//         alert("letra incorrecta");
+//     }
+
+
+
+// }
+// validarDNI();
 
 
 
