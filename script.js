@@ -133,7 +133,6 @@ function validarApellido() {
     return contador == apellido.length;
 }
 
-
 // validacion email
 
 function tieneArroba() {
@@ -154,7 +153,6 @@ function tieneArroba() {
     return cont == 1;
 }
     
-
 function tienePunto() {
     var email = document.getElementById("inputEmail").value;
     var cont = 0;
@@ -179,34 +177,22 @@ function validarEmail() {
     }
 }
 
-// validar DNI
-
-
-
-// function validarDni() {
-//     var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
- 
-//     do {
-//        var numeroDni = document.getElementById("inputDni");
-//     } while (isNaN(numeroDni) || numeroDni < 0 || numeroDni > 99999999);
-//     do {
-//         var letraDni = numeroDni%23;
-//     } while ((letraDni < 'a' || letraDni > 'z') && (letraDni < 'A' || letraDni > 'Z'));
-
-//         var letraAsignada = numeroDni & 23;
-//     if (letras[letraAsignada] == letraDni.toUpperCase) {
-//         textEmail.style.color="blue";
-//     } else {
-//         textEmail.style.color="red";
-//     }
-// }
+// validar DNI 
+function validarLetra() {
+    var dni = document.getElementById("inputDni").value;
+    var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+    return letras.charAt(parseInt(dni.substring(0,dni.length-1))%23) == dni.charAt(dni.length-1);
+}
 
 
 function validarDni() {
-    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-    var numeroDni = document.getElementById("inputDni").value;
-
+    if (validarLetra() === true) {
+        textDni.style.color="blue";
+    }else{
+        textDni.style.color="red"; 
+    }
 }
+
 
 
 
@@ -223,7 +209,9 @@ button.addEventListener("click", ()=>{
     validarNombre();
     validarApellido();
     validarEmail();
+    validarLetra()
     validarDni();
+    console.log(validarLetra());
     }
 )
 
